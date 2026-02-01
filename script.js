@@ -27,18 +27,20 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
    // Navigasi Tap: Kiri untuk balik, Kanan untuk lanjut
-    document.addEventListener('touchstart', function(e) {
+  document.addEventListener('touchstart', function(e) {
         if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
             const touchX = e.touches[0].clientX;
             const screenWidth = window.innerWidth;
 
-            if (touchX < screenWidth * 0.3) {
-                pageFlip.flipPrev(); // Balik ke halaman awal
+            // Klik sisi kiri layar (mundur), sisi kanan (maju)
+            if (touchX < screenWidth * 0.4) {
+                pageFlip.flipPrev();
             } else {
-                pageFlip.flipNext(); // Lanjut ke halaman depan
+                pageFlip.flipNext();
             }
         }
     }, {passive: true});
 });
+
 
 
