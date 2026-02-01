@@ -208,7 +208,7 @@ small {
         padding-right: 50px !important;
 
         /* KUNCINYA: Pakai scale tapi origin di TENAH agar tidak lari ke pojok */
-        transform: scale(0.38); 
+        transform: scale(0.55); 
         transform-origin: center center; 
         
         /* Menghilangkan margin yang bikin lari */
@@ -225,3 +225,4 @@ small {
         opacity: 1 !important;
     }
 }
+
