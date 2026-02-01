@@ -188,15 +188,26 @@ small {
    PAGAR PENYELAMAT HP (HANYA AKTIF DI LAYAR KECIL)
    ========================================================== */
 @media screen and (max-width: 1024px) {
+    body {
+        overflow: hidden; /* Mencegah layar goyang saat di-klik */
+    }
+
     .container {
-        width: 100% !important;
+        width: 100vw !important; /* Paksa lebar sesuai layar HP */
         height: 100vh !important;
-        justify-content: center !important; /* Buku pindah tengah di HP */
+        justify-content: center !important; /* Buku otomatis ke tengah di HP */
         padding-right: 0 !important;
-        transform: scale(0.65); /* Ini kuncinya! Zoom out otomatis */
+        transform: scale(0.6); /* Mengecilkan semua elemen agar pas di satu layar HP */
+        transform-origin: center;
     }
 
     .quill-pen {
-        display: none !important; /* Pena sembunyi di HP agar tidak sumpek */
+        left: -50px !important; /* Geser posisi pena agar tidak menumpuk dengan buku */
+        opacity: 0.8;
+    }
+
+    /* Memastikan sensor sentuhan (klik) tetap responsif */
+    .flip-book {
+        touch-action: manipulation;
     }
 }
