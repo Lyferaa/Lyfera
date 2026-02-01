@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden; /* Mencegah geser kanan-kiri yang mengganggu */
+    overflow-x: hidden;
     position: relative;
     font-family: 'Playfair Display', serif;
 }
@@ -23,7 +23,7 @@ body {
     max-width: 1000px; 
     height: 600px;
     display: flex;
-    justify-content: center; /* Diubah jadi center agar seimbang di semua layar */
+    justify-content: center; 
     align-items: center;
     padding: 20px;
 }
@@ -64,7 +64,6 @@ body {
     align-items: center;
     padding: 40px; 
     text-align: center;
-    position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
@@ -73,7 +72,6 @@ body {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
     border-left: 10px solid #000;
-    position: relative;
     outline: 2px solid #c5a059;
     outline-offset: -15px; 
     border-radius: 5px 15px 15px 5px;
@@ -84,7 +82,6 @@ body {
     position: absolute;
     color: #c5a059;
     font-size: 1.2rem;
-    z-index: 5;
     width: 100%;
     left: 0;
 }
@@ -99,7 +96,6 @@ body {
     color: #f1d295;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     font-size: 2rem;
-    line-height: 1.2;
 }
 
 .pinyon-font { 
@@ -116,56 +112,29 @@ body {
     margin: 20px 0;
 }
 
-/* --- 8. HALAMAN DALAM & LAYOUT --- */
-.layout-modern {
-    display: flex !important;
-    flex-direction: column !important;
-    padding: 20px !important;
-}
-
-.content-wrapper {
-    display: flex;
-    width: 100%;
-    gap: 15px;
-}
-
-.image-side img {
-    width: 100%;
-    max-height: 300px;
-    object-fit: contain; /* Agar gambar tidak terpotong */
-}
-
-/* --- 9. PERBAIKAN TOTAL UNTUK MOBILE (HP) --- */
+/* --- 8. PERBAIKAN TOTAL UNTUK MOBILE (HP) --- */
 @media (max-width: 600px) {
-    body {
-        height: 100vh;
-        overflow: hidden;
-    }
-
     .container {
-        width: 100%;
-        height: 90vh;
+        height: 100vh !important;
         padding: 10px !important;
-        justify-content: center !important;
     }
 
     .quill-pen {
-        display: none; /* Pena dihilangkan di HP agar fokus ke buku */
+        display: none; /* Hilangkan pena di HP biar nggak menumpuk */
     }
 
-    /* Ukuran Buku di HP agar Pas Layar */
+    /* Ukuran Buku di HP */
     .flip-book {
         width: 90vw !important;
-        height: 70vh !important;
+        height: 80vh !important; /* Sesuaikan tinggi agar pas di layar HP */
     }
 
     .page-content {
         padding: 20px !important;
     }
 
-    /* Ukuran Teks agar Tidak Kebesaran di HP */
     .cinzel-font {
-        font-size: 1.4rem !important;
+        font-size: 1.4rem !important; /* Kecilkan judul di HP */
         letter-spacing: 2px !important;
     }
 
@@ -179,10 +148,5 @@ body {
 
     .page-cover::before, .page-cover::after {
         font-size: 0.9rem;
-    }
-
-    .content-wrapper {
-        flex-direction: column;
-        align-items: center;
     }
 }
