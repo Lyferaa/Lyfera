@@ -74,3 +74,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, {passive: true});
 });
+// --- 5. LOGIKA AUTO-SCROLL SAAT ROTASI ---
+    window.addEventListener('orientationchange', function() {
+        if (window.orientation === 90 || window.orientation === -90) {
+            // Jika miring, paksa scroll ke posisi paling atas agar container terlihat rapi
+            setTimeout(() => {
+                window.scrollTo(0, 0);
+            }, 200);
+        }
+    });
