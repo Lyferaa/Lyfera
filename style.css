@@ -198,36 +198,70 @@ small {
         display: flex;
         position: fixed;
         top: 0; left: 0; width: 100%; height: 100%;
-        background: #050505; /* Warna dasar gelap */
-        color: #c5a059;
+        background-color: #050505;
+        background-image: url('https://raw.githubusercontent.com/Lyferaa/Lyfera/main/academia.jpg');
+        background-size: cover;
+        background-position: center;
         z-index: 10000;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        padding: 30px;
-        font-family: 'Cinzel', serif;
-        
-        /* --- EFEK VINTAGE BARU DI SINI --- */
-        background-image: url('https://raw.githubusercontent.com/Lyferaa/Lyfera/main/academia.jpg'), /* Tekstur kulit gelap */
-                        url('https://raw.githubusercontent.com/Lyferaa/Lyfera/main/academia.jpg'); /* Gambar border atau bingkai vintage (Ganti URL ini jika punya gambar lain) */
-        background-size: cover, 80% 80%; /* Ukuran cover untuk tekstur, 80% untuk bingkai */
-        background-position: center center;
-        background-repeat: no-repeat;
-
-        /* Tambahkan sedikit overlay gelap agar teks lebih jelas */
-        box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5); 
-        
-        /* Gaya Teks di dalam pesan */
-        p {
-            font-size: 1.1rem; /* Ukuran teks lebih besar */
-            line-height: 1.8;
-            padding: 20px;
-            background: rgba(0,0,0,0.3); /* Sedikit background transparan untuk teks */
-            border-radius: 10px;
-            border: 1px solid rgba(197, 160, 89, 0.5); /* Bingkai emas tipis */
-        }
+        flex-direction: column;
     }
-    .container { display: none !important; }
+
+    /* KERTAS AMPLOP */
+    .envelope-paper {
+        background: #d4bc8d; /* Warna kertas tua */
+        background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+        padding: 50px 30px;
+        width: 85%;
+        border-radius: 5px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 50px rgba(0,0,0,0.2);
+        border: 1px solid #b59410;
+        text-align: center;
+        position: relative;
+    }
+
+    .script-font {
+        font-family: 'Pinyon Script', cursive;
+        color: #3d2b1f;
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    /* TOMBOL CAP STEMPEL */
+    #wax-seal-btn {
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+    #wax-seal-btn img {
+        width: 100px;
+        filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4));
+    }
+
+    #wax-seal-btn span {
+        display: block;
+        font-family: 'Cinzel', serif;
+        font-size: 0.7rem;
+        color: #3d2b1f;
+        margin-top: 10px;
+        letter-spacing: 2px;
+    }
+
+    #wax-seal-btn:active { transform: scale(0.9); }
+
+    /* TEKS INSTRUKSI SETELAH BUKA */
+    #instruction-text p {
+        font-family: 'Cinzel', serif;
+        color: #c5a059;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        padding: 20px;
+        background: rgba(0,0,0,0.7);
+        border: 2px solid #c5a059;
+        border-radius: 10px;
+    }
 }
 
 /* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
@@ -258,6 +292,7 @@ small {
 
     #landscape-message { display: none; }
 }
+
 
 
 
