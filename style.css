@@ -138,13 +138,12 @@ small {
 .page {
     box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
 }
-/* Layout Split: Tulisan Kiri, Foto Kanan */
-/* Layout Baru: Judul di Atas, Bawahnya Split */
+
 .layout-modern {
     display: flex !important;
-    flex-direction: column !important; /* Susun vertikal: Header dulu baru Konten */
+    flex-direction: column !important;
     padding: 30px !important;
-    justify-content: flex-start !important; /* Mulai dari atas */
+    justify-content: flex-start !important;
 }
 
 .header-area {
@@ -157,12 +156,12 @@ small {
     display: flex;
     width: 100%;
     gap: 25px;
-    align-items: flex-start; /* Agar tulisan & foto tidak harus sejajar tingginya */
+    align-items: flex-start;
 }
 
 .text-side {
-    flex: 1.2; /* Angka 1.2 membuat area tulisan sedikit lebih lebar dari foto */
-    text-align: left; /* Tulisan deskripsi biasanya lebih cantik rata kiri/justified */
+    flex: 1.2;
+    text-align: left;
 }
 
 .text-side p {
@@ -172,15 +171,32 @@ small {
 }
 
 .image-side {
-    flex: 3; /* Area foto */
+    flex: 3;
     display: flex;
     justify-content: center;
 }
 
 .image-side img {
     width: 100%;
-    max-height: 350px; /* Membatasi tinggi agar tidak "tenggelam" */
+    max-height: 350px;
     object-fit: cover;
     border: none;
     box-shadow: none;
+}
+
+/* ==========================================================
+   PAGAR PENYELAMAT HP (HANYA AKTIF DI LAYAR KECIL)
+   ========================================================== */
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100% !important;
+        height: 100vh !important;
+        justify-content: center !important; /* Buku pindah tengah di HP */
+        padding-right: 0 !important;
+        transform: scale(0.65); /* Ini kuncinya! Zoom out otomatis */
+    }
+
+    .quill-pen {
+        display: none !important; /* Pena sembunyi di HP agar tidak sumpek */
+    }
 }
