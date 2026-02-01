@@ -68,7 +68,7 @@ body {
 
 /* --- 6. COVER VINTAGE (BLACK LEATHER & GOLD) --- */
 .page-cover {
-    background-color: #0d0d0d !important;
+    background-color: #2a0a0a !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
     border-left: 15px solid #000; /* Punggung Buku */
     position: relative;
@@ -225,4 +225,5 @@ small {
         opacity: 1 !important;
     }
 }
+
 
