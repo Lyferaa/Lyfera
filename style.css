@@ -208,7 +208,7 @@ small {
         font-family: 'Cinzel', serif;
         
         /* --- EFEK VINTAGE BARU DI SINI --- */
-        background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png'), /* Tekstur kulit gelap */
+        background-image: url('https://github.com/Lyferaa/Lyfera/blob/main/academia.jpg'), /* Tekstur kulit gelap */
                         url('https://github.com/Lyferaa/Lyfera/blob/main/academia.jpg'); /* Gambar border atau bingkai vintage (Ganti URL ini jika punya gambar lain) */
         background-size: cover, 80% 80%; /* Ukuran cover untuk tekstur, 80% untuk bingkai */
         background-position: center center;
@@ -258,5 +258,6 @@ small {
 
     #landscape-message { display: none; }
 }
+
 
 
