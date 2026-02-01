@@ -51,6 +51,7 @@ body {
 .page {
     background-color: #1a1a1a;
     overflow: hidden;
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
 }
 
 .page-content {
@@ -60,7 +61,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px; /* Jarak aman agar teks tidak nabrak bingkai */
+    padding: 60px; 
     text-align: center;
     position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
@@ -72,25 +73,25 @@ body {
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
     border-left: 15px solid #000; /* Punggung Buku */
     position: relative;
-    /* Bingkai Emas Luar */
     outline: 2px solid #c5a059;
     outline-offset: -20px; 
     border-radius: 5px 15px 15px 5px;
 }
 
-/* Efek Ornamen Sudut (Atas & Bawah) */
 .page-cover::before, .page-cover::after {
-    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·'; /* Simbol bintang ornamen */
+    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·'; 
     position: absolute;
     color: #c5a059;
     font-size: 1.5rem;
     z-index: 5;
+    width: 100%;
+    text-align: center;
+    left: 0;
 }
 
-.page-cover::before { top: 30px; left: 30px; }
-.page-cover::after { bottom: 30px; right: 30px; transform: rotate(180deg); }
+.page-cover::before { top: 30px; }
+.page-cover::after { bottom: 30px; transform: rotate(180deg); }
 
-/* Punggung Buku (Spine Ribs) */
 .spine-effect {
     position: absolute;
     left: 0;
@@ -135,16 +136,11 @@ small {
 }
 
 /* --- 8. HALAMAN DALAM --- */
-.page {
-    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
-}
-/* Layout Split: Tulisan Kiri, Foto Kanan */
-/* Layout Baru: Judul di Atas, Bawahnya Split */
 .layout-modern {
     display: flex !important;
-    flex-direction: column !important; /* Susun vertikal: Header dulu baru Konten */
+    flex-direction: column !important;
     padding: 30px !important;
-    justify-content: flex-start !important; /* Mulai dari atas */
+    justify-content: flex-start !important;
 }
 
 .header-area {
@@ -157,12 +153,12 @@ small {
     display: flex;
     width: 100%;
     gap: 25px;
-    align-items: flex-start; /* Agar tulisan & foto tidak harus sejajar tingginya */
+    align-items: flex-start;
 }
 
 .text-side {
-    flex: 1.2; /* Angka 1.2 membuat area tulisan sedikit lebih lebar dari foto */
-    text-align: left; /* Tulisan deskripsi biasanya lebih cantik rata kiri/justified */
+    flex: 1.2;
+    text-align: left;
 }
 
 .text-side p {
@@ -172,42 +168,61 @@ small {
 }
 
 .image-side {
-    flex: 3; /* Area foto */
+    flex: 3;
     display: flex;
     justify-content: center;
 }
 
 .image-side img {
     width: 100%;
-    max-height: 350px; /* Membatasi tinggi agar tidak "tenggelam" */
+    max-height: 350px;
     object-fit: cover;
-    border: none;
-    box-shadow: none;
 }
 
-/* Khusus untuk tampilan layar HP (Mobile) */
+/* --- 9. RESPONSIVE MOBILE (PERBAIKAN) --- */
 @media (max-width: 600px) {
-    .container {
-        width: 100vw !important; /* Paksa lebar sesuai layar HP */
-        min-height: 100vh !important;
-        padding: 20px !important;
+    body {
+        height: auto;
+        overflow-y: auto; /* Biar bisa di-scroll di HP */
     }
-}
-    h1 {
-        font-size: 1.8rem !important; /* Ukuran judul disesuaikan agar pas */
+
+    .container {
+        width: 100vw !important;
+        height: auto !important;
+        padding: 10px !important;
+        justify-content: center !important;
+        padding-right: 0 !important;
+    }
+
+    .quill-pen {
+        display: none; /* Sembunyikan pena di HP agar tidak sumpek */
+    }
+
+    .page-content {
+        padding: 30px 15px !important;
+    }
+
+    .cinzel-font {
+        font-size: 1.6rem !important;
+        letter-spacing: 2px !important;
     }
 
     .pinyon-font {
-        font-size: 1.2rem !important;
+        font-size: 1.4rem !important;
     }
 
-    /* Jika pakai efek buku, paksa jadi satu halaman saja */
-    #book {
-        width: 100% !important;
-        height: auto !important;
+    /* Penyesuaian Buku di HP */
+    #book, .flip-book {
+        width: 95% !important;
+        height: 500px !important; /* Batasi tinggi di HP */
+        margin: 0 auto;
+    }
+
+    .content-wrapper {
+        flex-direction: column; /* Foto dan teks jadi berurutan atas-bawah */
+    }
+
+    .image-side img {
+        max-height: 250px;
     }
 }
-
-
-
-
