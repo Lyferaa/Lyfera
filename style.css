@@ -22,9 +22,10 @@ body {
     width: 1000px; 
     height: 600px;
     display: flex;
-    justify-content: flex-end; /* Buku di sisi kanan */
+    justify-content: flex-end; /* KEMBALIKAN KE KANAN */
     align-items: center;
     padding-right: 50px;
+    margin: 0 auto; /* Tambahkan ini agar di laptop tetap di tengah layar */
 }
 
 /* --- 3. DEKORASI PENA BULU (Sisi Kiri) --- */
@@ -227,28 +228,20 @@ body {
 @media screen and (max-width: 1024px) and (orientation: landscape) {
     body {
         overflow-y: auto !important; 
-        overflow-x: hidden !important;
         display: block !important; 
         height: auto !important;
-        padding-top: 50px !important; /* Jarak agar buku tidak terpotong Bar browser */
-        background-color: #050505;
-    }
-
-    #landscape-message { 
-        display: none !important; 
-        pointer-events: none; 
+        padding-top: 50px !important; 
     }
 
     .container {
         display: flex !important;
+        justify-content: center !important; /* Di HP kita buat tengah saja */
+        padding-right: 0 !important; /* Hapus padding kanan laptop */
         width: 1000px !important; 
         height: 600px !important;
-        position: relative !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        left: 0 !important;
+        margin: 0 auto !important;
         transform: scale(0.7) !important; 
         transform-origin: top center; 
-        margin-bottom: 250px !important; /* Ruang scroll di bawah */
+        margin-bottom: 250px !important; 
     }
 }
