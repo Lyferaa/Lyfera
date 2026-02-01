@@ -4,27 +4,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* Khusus untuk tampilan layar HP (Mobile) */
-@media (max-width: 600px) {
-    .container {
-        width: 95%; /* Biar gak mentok pinggir layar */
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 1.8rem !important; /* Ukuran judul disesuaikan agar pas */
-    }
-
-    .pinyon-font {
-        font-size: 1.2rem !important;
-    }
-
-    /* Jika pakai efek buku, paksa jadi satu halaman saja */
-    #book {
-        width: 100% !important;
-        height: auto !important;
-    }
-}
 
 body {
     background-color: #050505; /* Latar gelap pekat */
@@ -205,4 +184,28 @@ small {
     border: none;
     box-shadow: none;
 }
+
+/* Khusus untuk tampilan layar HP (Mobile) */
+@media (max-width: 600px) {
+    .container {
+        width: 95%; /* Biar gak mentok pinggir layar */
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem !important; /* Ukuran judul disesuaikan agar pas */
+    }
+
+    .pinyon-font {
+        font-size: 1.2rem !important;
+    }
+
+    /* Jika pakai efek buku, paksa jadi satu halaman saja */
+    #book {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+
 
