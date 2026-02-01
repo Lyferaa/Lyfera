@@ -49,9 +49,10 @@ body {
 
 /* --- 5. HALAMAN UMUM --- */
 .page {
-    background-color: #1a1a1a;
+    background-color:  #2a0a0a;
     overflow: hidden;
 }
+
 
 .page-content {
     width: 100%;
@@ -70,7 +71,7 @@ body {
 .page-cover {
     background-color: #2a0a0a !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
-    border-left: 15px solid #000; /* Punggung Buku */
+    border-left: 15px solid #2a0a0a; /* Punggung Buku */
     position: relative;
     /* Bingkai Emas Luar */
     outline: 2px solid #c5a059;
@@ -97,7 +98,7 @@ body {
     top: 0;
     width: 15px;
     height: 100%;
-    background: linear-gradient(90deg, #000, #222, #000);
+    background: linear-gradient(90deg,#2a0a0a, #2a0a0a,#2a0a0a);
     box-shadow: 2px 0 5px rgba(0,0,0,0.5);
     z-index: 10;
 }
@@ -225,5 +226,6 @@ small {
         opacity: 1 !important;
     }
 }
+
 
 
