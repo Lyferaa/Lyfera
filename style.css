@@ -53,7 +53,6 @@ body {
     overflow: hidden;
 }
 
-
 .page-content {
     width: 100%;
     height: 100%;
@@ -61,27 +60,25 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px; /* Jarak aman agar teks tidak nabrak bingkai */
+    padding: 60px;
     text-align: center;
     position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 6. COVER VINTAGE (BLACK LEATHER & GOLD) --- */
+/* --- 6. COVER VINTAGE --- */
 .page-cover {
     background-color: #2a0a0a !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
-    border-left: 15px solid #2a0a0a; /* Punggung Buku */
+    border-left: 15px solid #2a0a0a; 
     position: relative;
-    /* Bingkai Emas Luar */
     outline: 2px solid #c5a059;
     outline-offset: -20px; 
     border-radius: 5px 15px 15px 5px;
 }
 
-/* Efek Ornamen Sudut (Atas & Bawah) */
 .page-cover::before, .page-cover::after {
-    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·'; /* Simbol bintang ornamen */
+    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·';
     position: absolute;
     color: #c5a059;
     font-size: 1.5rem;
@@ -91,7 +88,6 @@ body {
 .page-cover::before { top: 30px; left: 30px; }
 .page-cover::after { bottom: 30px; right: 30px; transform: rotate(180deg); }
 
-/* Punggung Buku (Spine Ribs) */
 .spine-effect {
     position: absolute;
     left: 0;
@@ -103,7 +99,7 @@ body {
     z-index: 10;
 }
 
-/* --- 7. TYPOGRAPHY (TULISAN EMAS) --- */
+/* --- 7. TYPOGRAPHY --- */
 .cinzel-font { 
     font-family: 'Cinzel', serif; 
     letter-spacing: 5px; 
@@ -127,68 +123,23 @@ body {
     margin: 20px 0;
 }
 
-small {
-    color: #666;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    margin-top: 30px;
-}
-
-/* --- 8. HALAMAN DALAM --- */
-.page {
-    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
-}
-
 .layout-modern {
     display: flex !important;
     flex-direction: column !important;
     padding: 30px !important;
-    justify-content: flex-start !important;
-}
-
-.header-area {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.content-wrapper {
-    display: flex;
-    width: 100%;
-    gap: 25px;
-    align-items: flex-start;
-}
-
-.text-side {
-    flex: 1.2;
-    text-align: left;
-}
-
-.text-side p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #d4d4d4;
-}
-
-.image-side {
-    flex: 3;
-    display: flex;
-    justify-content: center;
 }
 
 .image-side img {
     width: 100%;
     max-height: 350px;
     object-fit: cover;
-    border: none;
-    box-shadow: none;
 }
 
 /* ==========================================================
-   PAGAR PENYELAMAT HP (HANYA AKTIF DI LAYAR KECIL)
+   BAGIAN HP (PORTRAIT & LANDSCAPE)
    ========================================================== */
-/* 1. Sembunyikan pesan saat di laptop */
+
+/* 1. SAAT HP TEGAK (PORTRAIT) */
 #landscape-message {
     display: none;
 }
@@ -210,7 +161,7 @@ small {
 
     /* KERTAS AMPLOP */
     .envelope-paper {
-        background: #d4bc8d; /* Warna kertas tua */
+        background: #d4bc8d;
         background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
         padding: 50px 30px;
         width: 85%;
@@ -249,35 +200,43 @@ small {
         letter-spacing: 2px;
     }
 
-    #wax-seal-btn:active { transform: scale(0.9); }
+    /* TEKS INSTRUKSI (Awalnya tersembunyi lewat JS) */
+    #instruction-text {
+        width: 100%;
+        display: none;
+        justify-content: center;
+        padding: 20px;
+    }
 
-    /* TEKS INSTRUKSI SETELAH BUKA */
     #instruction-text p {
         font-family: 'Cinzel', serif;
         color: #c5a059;
         font-size: 1.1rem;
         line-height: 1.6;
-        padding: 20px;
-        background: rgba(0,0,0,0.7);
+        padding: 25px;
+        background: rgba(0,0,0,0.85);
         border: 2px solid #c5a059;
         border-radius: 10px;
+        text-align: center;
     }
+
+    .container { display: none !important; }
 }
 
-/* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
+/* 2. SAAT HP MIRING (LANDSCAPE) */
 @media screen and (max-width: 1024px) and (orientation: landscape) {
     body {
-        overflow-y: auto !important; /* Wajib auto agar bisa scroll */
+        overflow-y: auto !important; 
         overflow-x: hidden !important;
         display: block !important; 
         height: auto !important;
+        padding-top: 50px !important; /* Jarak agar buku tidak terpotong Bar browser */
         background-color: #050505;
     }
 
-    /* KUNCINYA DI SINI: Pastikan pesan tidak menghalangi sentuhan */
     #landscape-message { 
         display: none !important; 
-        pointer-events: none; /* Biar jari tembus ke buku */
+        pointer-events: none; 
     }
 
     .container {
@@ -285,12 +244,11 @@ small {
         width: 1000px !important; 
         height: 600px !important;
         position: relative !important;
-        left: 50% !important;
-        transform: translateX(-50%) scale(0.7) !important; 
+        margin-left: auto !important;
+        margin-right: auto !important;
+        left: 0 !important;
+        transform: scale(0.7) !important; 
         transform-origin: top center; 
-        margin-top: 20px !important;
-        margin-bottom: 150px !important; /* Tambah ruang di bawah agar scroll lebih lega */
+        margin-bottom: 250px !important; /* Ruang scroll di bawah */
     }
 }
-
-
