@@ -27,19 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // --- NAVIGASI PINTAR UNTUK HP ---
-    document.addEventListener('touchstart', function(e) {
-        if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
-            const touchX = e.touches[0].clientX;
-            const screenWidth = window.innerWidth;
+   document.addEventListener('touchstart', function(e) {
+    // Memastikan klik hanya jalan jika tidak sedang melakukan scroll berat
+    if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
+        const touchX = e.touches[0].clientX;
+        const screenWidth = window.innerWidth;
 
-            // Jika sentuh layar bagian kiri (30% layar), balik ke halaman sebelumnya
-            if (touchX < screenWidth * 0.3) {
-                pageFlip.flipPrev();
-            } 
-            // Jika sentuh sisa layarnya, lanjut ke halaman depan
-            else {
-                pageFlip.flipNext();
-            }
+        if (touchX < screenWidth * 0.3) {
+            pageFlip.flipPrev();
+        } else {
+            pageFlip.flipNext();
         }
-    });
+    }
+}, {passive: true});
 });
+
