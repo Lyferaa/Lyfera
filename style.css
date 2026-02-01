@@ -271,17 +271,11 @@ small {
         overflow-x: hidden !important;
         display: block !important; 
         height: auto !important;
-        background-color: #050505;
-    }
-
-    #landscape-message { 
-        display: none !important; 
-        pointer-events: none !important; 
     }
 
     .container {
         display: flex !important;
-        /* Ini supaya area tengah (garis patah-patah) bisa di-scroll */
+        /* Membuat area kosong di sekitar buku 'tembus' sentuhan */
         pointer-events: none !important; 
         
         width: 1000px !important; 
@@ -294,8 +288,11 @@ small {
         margin-bottom: 250px !important; 
     }
 
-    /* Ini supaya bukunya tetap bisa diklik untuk balik halaman */
     .flip-book {
+        /* Mengembalikan fungsi sentuh HANYA pada buku */
         pointer-events: auto !important; 
     }
-} /* Pastikan ada kurung penutup ini agar tidak merusak laptop */
+
+    #landscape-message { display: none !important; }
+} /* <--- PENUTUP INI WAJIB ADA AGAR LAPTOP TIDAK RUSAK */
+
