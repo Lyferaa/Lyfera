@@ -274,7 +274,6 @@ small {
         background-color: #050505;
     }
 
-    /* Agar pesan yang hilang tidak menghalangi jari di tengah layar */
     #landscape-message { 
         display: none !important; 
         pointer-events: none !important; 
@@ -282,7 +281,7 @@ small {
 
     .container {
         display: flex !important;
-        /* KUNCI AGAR AREA TENGAH BISA DI-SCROLL: */
+        /* Ini supaya area tengah (garis patah-patah) bisa di-scroll */
         pointer-events: none !important; 
         
         width: 1000px !important; 
@@ -295,8 +294,8 @@ small {
         margin-bottom: 250px !important; 
     }
 
-    /* Buku harus tetap bisa disentuh untuk balik halaman */
+    /* Ini supaya bukunya tetap bisa diklik untuk balik halaman */
     .flip-book {
         pointer-events: auto !important; 
     }
-}
+} /* Pastikan ada kurung penutup ini agar tidak merusak laptop */
