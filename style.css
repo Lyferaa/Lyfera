@@ -1,0 +1,186 @@
+/* --- 1. RESET & DASAR --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #050505; /* Latar gelap pekat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Playfair Display', serif;
+}
+
+/* --- 2. CONTAINER & POSISI --- */
+.container {
+    position: relative;
+    width: 1000px; 
+    height: 600px;
+    display: flex;
+    justify-content: flex-end; /* Buku di sisi kanan */
+    align-items: center;
+    padding-right: 50px;
+}
+
+/* --- 3. DEKORASI PENA BULU (Sisi Kiri) --- */
+.quill-pen {
+    position: absolute;
+    left: 50px;
+    bottom: 70px;
+    width: 280px;
+    z-index: 1;
+    filter: brightness(1.0);
+    transform: rotate(-0deg) scaleX(-1);
+    pointer-events: none;
+}
+
+/* --- 4. STYLING BUKU (FLIP BOOK) --- */
+.flip-book {
+    box-shadow: none;
+    background-color: transparent;
+    display: block;
+    z-index: 10;
+}
+
+/* --- 5. HALAMAN UMUM --- */
+.page {
+    background-color: #1a1a1a;
+    overflow: hidden;
+}
+
+.page-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px; /* Jarak aman agar teks tidak nabrak bingkai */
+    text-align: center;
+    position: relative;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
+}
+
+/* --- 6. COVER VINTAGE (BLACK LEATHER & GOLD) --- */
+.page-cover {
+    background-color: #0d0d0d !important;
+    background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
+    border-left: 15px solid #000; /* Punggung Buku */
+    position: relative;
+    /* Bingkai Emas Luar */
+    outline: 2px solid #c5a059;
+    outline-offset: -20px; 
+    border-radius: 5px 15px 15px 5px;
+}
+
+/* Efek Ornamen Sudut (Atas & Bawah) */
+.page-cover::before, .page-cover::after {
+    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·'; /* Simbol bintang ornamen */
+    position: absolute;
+    color: #c5a059;
+    font-size: 1.5rem;
+    z-index: 5;
+}
+
+.page-cover::before { top: 30px; left: 30px; }
+.page-cover::after { bottom: 30px; right: 30px; transform: rotate(180deg); }
+
+/* Punggung Buku (Spine Ribs) */
+.spine-effect {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    background: linear-gradient(90deg, #000, #222, #000);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* --- 7. TYPOGRAPHY (TULISAN EMAS) --- */
+.cinzel-font { 
+    font-family: 'Cinzel', serif; 
+    letter-spacing: 5px; 
+    color: #f1d295;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.pinyon-font { 
+    font-family: 'Pinyon Script', cursive; 
+    color: #b59410; 
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c5a059, transparent);
+    margin: 20px 0;
+}
+
+small {
+    color: #666;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-top: 30px;
+}
+
+/* --- 8. HALAMAN DALAM --- */
+.page {
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
+}
+/* Layout Split: Tulisan Kiri, Foto Kanan */
+/* Layout Baru: Judul di Atas, Bawahnya Split */
+.layout-modern {
+    display: flex !important;
+    flex-direction: column !important; /* Susun vertikal: Header dulu baru Konten */
+    padding: 30px !important;
+    justify-content: flex-start !important; /* Mulai dari atas */
+}
+
+.header-area {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.content-wrapper {
+    display: flex;
+    width: 100%;
+    gap: 25px;
+    align-items: flex-start; /* Agar tulisan & foto tidak harus sejajar tingginya */
+}
+
+.text-side {
+    flex: 1.2; /* Angka 1.2 membuat area tulisan sedikit lebih lebar dari foto */
+    text-align: left; /* Tulisan deskripsi biasanya lebih cantik rata kiri/justified */
+}
+
+.text-side p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #d4d4d4;
+}
+
+.image-side {
+    flex: 3; /* Area foto */
+    display: flex;
+    justify-content: center;
+}
+
+.image-side img {
+    width: 100%;
+    max-height: 350px; /* Membatasi tinggi agar tidak "tenggelam" */
+    object-fit: cover;
+    border: none;
+    box-shadow: none;
+}
