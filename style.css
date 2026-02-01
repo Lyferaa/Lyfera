@@ -266,33 +266,42 @@ small {
 
 /* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
 @media screen and (max-width: 1024px) and (orientation: landscape) {
-    body {
-        overflow-y: scroll !important; 
+    html, body {
+        /* Mengunci layar agar tidak goyang ke samping */
         overflow-x: hidden !important;
-        display: block !important; 
-        height: auto !important;
+        overflow-y: auto !important;
+        height: 100% !important;
+        position: relative !important;
     }
 
     .container {
         display: flex !important;
-        /* Membuat area kosong di sekitar buku 'tembus' sentuhan */
+        /* KUNCI UTAMA: Kita buat container-nya 'tembus' total */
         pointer-events: none !important; 
         
         width: 1000px !important; 
         height: 600px !important;
-        position: relative !important;
+        position: absolute !important; /* Gunakan absolute agar tidak mendorong scroll */
+        top: 50px !important;
         left: 50% !important;
-        transform: translateX(-50%) scale(0.7) !important; 
+        transform: translateX(-50%) scale(0.65) !important; 
         transform-origin: top center; 
-        margin-top: 50px !important;  
-        margin-bottom: 250px !important; 
+        z-index: 5;
     }
 
     .flip-book {
-        /* Mengembalikan fungsi sentuh HANYA pada buku */
+        /* HANYA buku yang bisa menerima sentuhan jari */
         pointer-events: auto !important; 
     }
 
-    #landscape-message { display: none !important; }
-} /* <--- PENUTUP INI WAJIB ADA AGAR LAPTOP TIDAK RUSAK */
+    /* Tambahkan ruang kosong buatan agar HP mendeteksi ada area untuk di-scroll */
+    body::after {
+        content: "";
+        display: block;
+        height: 800px; /* Panjang area scroll */
+        width: 1px;
+        pointer-events: none;
+    }
 
+    #landscape-message { display: none !important; }
+}
