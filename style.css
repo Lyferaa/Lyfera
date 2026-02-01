@@ -16,7 +16,7 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- 2. CONTAINER (LAPTOP ASLI) --- */
+/* --- 2. CONTAINER & POSISI (LAPTOP) --- */
 .container {
     position: relative;
     width: 1000px; 
@@ -27,7 +27,7 @@ body {
     padding-right: 50px;
 }
 
-/* --- 3. DEKORASI PENA BULU (LAPTOP ASLI) --- */
+/* --- 3. DEKORASI PENA BULU --- */
 .quill-pen {
     position: absolute;
     left: 50px;
@@ -65,7 +65,7 @@ body {
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 5. COVER & TYPOGRAPHY (LAPTOP ASLI) --- */
+/* --- 5. COVER VINTAGE --- */
 .page-cover {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
@@ -89,30 +89,26 @@ body {
     font-size: 2rem;
 }
 
-/* --- 6. HANYA UNTUK HP (PAGAR KUAT) --- */
+/* --- 6. MANTRA PENYELAMAT HP (Hanya jalan di HP) --- */
 @media screen and (max-width: 768px) {
     .container {
         width: 100% !important;
-        height: 100vh !important;
-        justify-content: center !important; /* Buku ke tengah di HP */
-        padding: 10px !important;
+        height: 100% !important;
+        justify-content: center !important; /* Buku ke tengah */
+        padding-right: 0 !important;
+        transform: scale(0.8); /* Mengecilkan seluruh konten agar pas di HP */
     }
 
     .quill-pen {
-        display: none !important; /* Sembunyikan pena di HP */
-    }
-
-    .flip-book, #book {
-        width: 95vw !important; /* Biar pas sama lebar HP */
-        height: 60vh !important; /* Biar nggak terlalu panjang */
+        display: none !important; /* Sembunyikan pena di HP agar tidak sumpek */
     }
 
     .cinzel-font {
-        font-size: 1.4rem !important;
+        font-size: 1.6rem !important;
         letter-spacing: 2px !important;
     }
 
     .pinyon-font {
-        font-size: 1.2rem !important;
+        font-size: 1.4rem !important;
     }
 }
