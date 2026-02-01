@@ -16,18 +16,18 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- 2. CONTAINER (LAPTOP) --- */
+/* --- 2. CONTAINER (KEMBALI KE ASLI LAPTOP) --- */
 .container {
     position: relative;
-    width: 1000px; 
+    width: 1000px; /* Kembali ke ukuran laptopmu */
     height: 600px;
     display: flex;
-    justify-content: flex-end; /* Mengembalikan posisi buku ke kanan */
+    justify-content: flex-end; /* Buku tetap di kanan */
     align-items: center;
     padding-right: 50px;
 }
 
-/* --- 3. PENA BULU (Hanya Muncul di Laptop) --- */
+/* --- 3. PENA BULU (KEMBALI KE ASLI) --- */
 .quill-pen {
     position: absolute;
     left: 50px;
@@ -39,18 +39,12 @@ body {
     pointer-events: none;
 }
 
-/* --- 4. BUKU & HALAMAN --- */
+/* --- 4. BUKU & COVER --- */
 .flip-book {
     box-shadow: none;
     background-color: transparent;
     display: block;
     z-index: 10;
-}
-
-.page {
-    background-color: #1a1a1a;
-    overflow: hidden;
-    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5);
 }
 
 .page-content {
@@ -62,36 +56,23 @@ body {
     align-items: center;
     padding: 60px;
     text-align: center;
-    position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 5. COVER & TYPOGRAPHY --- */
 .page-cover {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
     border-left: 15px solid #000;
-    position: relative;
     outline: 2px solid #c5a059;
     outline-offset: -20px; 
     border-radius: 5px 15px 15px 5px;
 }
 
-.page-cover::before, .page-cover::after {
-    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·';
-    position: absolute;
-    color: #c5a059;
-    font-size: 1.5rem;
-    z-index: 5;
-}
-.page-cover::before { top: 30px; left: 30px; }
-.page-cover::after { bottom: 30px; right: 30px; transform: rotate(180deg); }
-
+/* --- 5. TYPOGRAPHY LAPTOP --- */
 .cinzel-font { 
     font-family: 'Cinzel', serif; 
     letter-spacing: 5px; 
     color: #f1d295;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
     font-size: 2.2rem;
 }
 
@@ -101,34 +82,30 @@ body {
     font-size: 2rem;
 }
 
-/* --- 6. KHUSUS TAMPILAN HP (MOBILE ONLY) --- */
-@media (max-width: 600px) {
-    body {
-        overflow: auto; /* Biar bisa scroll di HP */
-    }
-
+/* --- 6. KHUSUS TAMPILAN HP (TIDAK AKAN MERUSAK LAPTOP) --- */
+@media (max-width: 768px) {
     .container {
-        width: 100vw !important;
+        width: 100% !important; /* Di HP pakai lebar penuh */
         height: auto !important;
-        justify-content: center !important; /* Di HP buku jadi di tengah */
+        justify-content: center !important; /* Di HP buku di tengah */
         padding-right: 0 !important;
     }
 
     .quill-pen {
-        display: none; /* Sembunyikan pena di HP agar tidak berantakan */
+        display: none; /* Sembunyikan pena di HP agar judul tidak tertutup */
     }
 
     #book, .flip-book {
-        width: 90vw !important; /* Paksa lebar buku pas dengan layar HP */
+        width: 90vw !important; /* Buku menyesuaikan lebar HP */
         height: 500px !important;
     }
 
     .cinzel-font {
-        font-size: 1.5rem !important; /* Kecilkan teks di HP */
+        font-size: 1.5rem !important; /* Judul mengecil di HP */
         letter-spacing: 2px !important;
     }
 
     .pinyon-font {
-        font-size: 1.3rem !important;
+        font-size: 1.2rem !important;
     }
 }
