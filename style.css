@@ -16,18 +16,18 @@ body {
     font-family: 'Playfair Display', serif;
 }
 
-/* --- 2. CONTAINER (SETINGAN ASLI LAPTOP) --- */
+/* --- 2. CONTAINER (LAPTOP ASLI) --- */
 .container {
     position: relative;
     width: 1000px; 
     height: 600px;
     display: flex;
-    justify-content: flex-end; /* Buku balik ke kanan */
+    justify-content: flex-end; 
     align-items: center;
     padding-right: 50px;
 }
 
-/* --- 3. DEKORASI PENA BULU (ASLI) --- */
+/* --- 3. DEKORASI PENA BULU (LAPTOP ASLI) --- */
 .quill-pen {
     position: absolute;
     left: 50px;
@@ -65,7 +65,7 @@ body {
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 5. COVER & TYPOGRAPHY (ASLI EMAS) --- */
+/* --- 5. COVER & TYPOGRAPHY (LAPTOP ASLI) --- */
 .page-cover {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
@@ -89,24 +89,22 @@ body {
     font-size: 2rem;
 }
 
-/* --- 6. KHUSUS TAMPILAN HP (MOBILE ONLY) --- */
-/* Kode di bawah ini HANYA jalan di HP, tidak akan menyentuh Laptop */
+/* --- 6. HANYA UNTUK HP (PAGAR KUAT) --- */
 @media screen and (max-width: 768px) {
     .container {
         width: 100% !important;
-        height: 100% !important;
-        justify-content: center !important; /* Di HP buku ke tengah */
-        padding-right: 0 !important;
+        height: 100vh !important;
+        justify-content: center !important; /* Buku ke tengah di HP */
+        padding: 10px !important;
     }
 
     .quill-pen {
-        display: none !important; /* Hilangkan pena di HP */
+        display: none !important; /* Sembunyikan pena di HP */
     }
 
     .flip-book, #book {
-        width: 90vw !important; /* Kecilkan buku sesuai layar HP */
-        height: 70vh !important;
-        transform: scale(0.9); /* Sedikit zoom out agar pas */
+        width: 95vw !important; /* Biar pas sama lebar HP */
+        height: 60vh !important; /* Biar nggak terlalu panjang */
     }
 
     .cinzel-font {
