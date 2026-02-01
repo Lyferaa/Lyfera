@@ -26,19 +26,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- NAVIGASI PINTAR UNTUK HP ---
-   document.addEventListener('touchstart', function(e) {
-    // Memastikan klik hanya jalan jika tidak sedang melakukan scroll berat
-    if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
-        const touchX = e.touches[0].clientX;
-        const screenWidth = window.innerWidth;
+   // Navigasi Tap: Kiri untuk balik, Kanan untuk lanjut
+    document.addEventListener('touchstart', function(e) {
+        if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
+            const touchX = e.touches[0].clientX;
+            const screenWidth = window.innerWidth;
 
-        if (touchX < screenWidth * 0.3) {
-            pageFlip.flipPrev();
-        } else {
-            pageFlip.flipNext();
+            if (touchX < screenWidth * 0.3) {
+                pageFlip.flipPrev(); // Balik ke halaman awal
+            } else {
+                pageFlip.flipNext(); // Lanjut ke halaman depan
+            }
         }
-    }
-}, {passive: true});
+    }, {passive: true});
 });
+
 
