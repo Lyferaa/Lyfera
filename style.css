@@ -189,35 +189,50 @@ small {
    ========================================================== */
 @media screen and (max-width: 1024px) {
     body {
-        overflow: hidden;
+        /* Mengizinkan scroll agar bisa digeser-geser */
+        overflow: auto !important; 
+        display: block !important; /* Agar tidak dipaksa ke tengah layar */
     }
 
-    /* Memaksa kontainer HP punya struktur yang sama dengan laptop */
     .container {
-        width: 1000px !important; /* Ukuran asli laptop */
-        height: 600px !important;
+        /* Tetap gunakan ukuran asli laptop agar tidak hancur */
+        width: 1100px !important; 
+        height: 700px !important;
         display: flex !important;
-        flex-direction: row !important; /* Tetap menyamping */
         justify-content: flex-end !important;
+        align-items: center !important;
+        position: relative !important;
         padding-right: 50px !important;
         
-        /* KUNCINYA: Zoom out seluruh kontainer agar muat di HP */
-        transform: scale(0.35); 
-        transform-origin: center center;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -500px; /* Setengah dari width */
-        margin-top: -300px;  /* Setengah dari height */
+        /* Hilangkan transform scale agar ukuran tetap besar/utuh */
+        transform: none !important; 
+        left: 0 !important;
+        top: 0 !important;
+        margin: 0 !important;
     }
 
     .quill-pen {
-        display: block !important; /* Pastikan pena bulu muncul */
+        display: block !important;
         position: absolute !important;
-        left: 50px !important;
-        bottom: 70px !important;
+        left: 30px !important; /* Posisi asli pena di kiri */
+        bottom: 50px !important;
         width: 280px !important;
         opacity: 1 !important;
-        transform: rotate(0deg) scaleX(-1) !important;
+    }
+
+    /* Tambahkan petunjuk visual agar user tahu bisa digeser */
+    body::after {
+        content: "← Geser untuk melihat pena / buku →";
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #c5a059;
+        font-size: 12px;
+        background: rgba(0,0,0,0.6);
+        padding: 5px 15px;
+        border-radius: 20px;
+        z-index: 100;
+        pointer-events: none;
     }
 }
