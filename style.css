@@ -213,16 +213,29 @@ small {
 
 /* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
 @media screen and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        /* Mengizinkan scroll ke bawah jika konten lebih tinggi dari layar HP */
+        overflow-y: auto !important; 
+        overflow-x: hidden !important;
+        display: block !important; /* Menghapus flex agar scroll bekerja alami */
+        height: auto !important;
+    }
+
     .container {
         display: flex !important;
-        transform: scale(0.65); /* Ukuran pas di layar miring */
-        transform-origin: center center;
-        width: 1000px !important;
+        /* Ukuran tetap seperti laptop */
+        width: 1000px !important; 
         height: 600px !important;
-        position: fixed;
-        top: 50%; left: 50%;
-        margin-left: -500px;
-        margin-top: -300px;
+        
+        /* Posisi tetap di tengah secara horizontal */
+        position: relative !important;
+        left: 50% !important;
+        transform: translateX(-50%) scale(0.7) !important; /* Geser ke tengah & kecilkan sedikit */
+        transform-origin: top center; /* KUNCINYA: Mulai dari atas agar tidak terpotong */
+        
+        margin-top: 20px !important;  /* Jarak dari batas atas layar */
+        margin-bottom: 100px !important; /* Ruang ekstra di bawah agar bisa di-scroll sampai habis */
     }
+
     #landscape-message { display: none; }
 }
