@@ -10,45 +10,43 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+    height: 100vh;
+    overflow: hidden;
     position: relative;
     font-family: 'Playfair Display', serif;
 }
 
-/* --- 2. CONTAINER & POSISI --- */
+/* --- 2. CONTAINER (LAPTOP) --- */
 .container {
     position: relative;
-    width: 100%;
-    max-width: 1000px; 
+    width: 1000px; 
     height: 600px;
     display: flex;
-    justify-content: center; 
+    justify-content: flex-end; /* Mengembalikan posisi buku ke kanan */
     align-items: center;
-    padding: 20px;
+    padding-right: 50px;
 }
 
-/* --- 3. DEKORASI PENA BULU --- */
+/* --- 3. PENA BULU (Hanya Muncul di Laptop) --- */
 .quill-pen {
     position: absolute;
     left: 50px;
     bottom: 70px;
     width: 280px;
     z-index: 1;
-    filter: brightness(0.8);
-    transform: scaleX(-1);
+    filter: brightness(1.0);
+    transform: rotate(-0deg) scaleX(-1);
     pointer-events: none;
 }
 
-/* --- 4. STYLING BUKU --- */
+/* --- 4. BUKU & HALAMAN --- */
 .flip-book {
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    box-shadow: none;
     background-color: transparent;
     display: block;
     z-index: 10;
 }
 
-/* --- 5. HALAMAN UMUM --- */
 .page {
     background-color: #1a1a1a;
     overflow: hidden;
@@ -62,91 +60,75 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 40px; 
+    padding: 60px;
     text-align: center;
+    position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 6. COVER VINTAGE --- */
+/* --- 5. COVER & TYPOGRAPHY --- */
 .page-cover {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
-    border-left: 10px solid #000;
+    border-left: 15px solid #000;
+    position: relative;
     outline: 2px solid #c5a059;
-    outline-offset: -15px; 
+    outline-offset: -20px; 
     border-radius: 5px 15px 15px 5px;
 }
 
 .page-cover::before, .page-cover::after {
-    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺·'; 
+    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·';
     position: absolute;
     color: #c5a059;
-    font-size: 1.2rem;
-    width: 100%;
-    left: 0;
+    font-size: 1.5rem;
+    z-index: 5;
 }
+.page-cover::before { top: 30px; left: 30px; }
+.page-cover::after { bottom: 30px; right: 30px; transform: rotate(180deg); }
 
-.page-cover::before { top: 25px; }
-.page-cover::after { bottom: 25px; transform: rotate(180deg); }
-
-/* --- 7. TYPOGRAPHY --- */
 .cinzel-font { 
     font-family: 'Cinzel', serif; 
-    letter-spacing: 3px; 
+    letter-spacing: 5px; 
     color: #f1d295;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    font-size: 2rem;
+    font-size: 2.2rem;
 }
 
 .pinyon-font { 
     font-family: 'Pinyon Script', cursive; 
     color: #b59410; 
-    font-size: 1.8rem;
-    margin: 15px 0;
+    font-size: 2rem;
 }
 
-.divider {
-    width: 100px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #c5a059, transparent);
-    margin: 20px 0;
-}
-
-/* --- 8. PERBAIKAN TOTAL UNTUK MOBILE (HP) --- */
+/* --- 6. KHUSUS TAMPILAN HP (MOBILE ONLY) --- */
 @media (max-width: 600px) {
+    body {
+        overflow: auto; /* Biar bisa scroll di HP */
+    }
+
     .container {
-        height: 100vh !important;
-        padding: 10px !important;
+        width: 100vw !important;
+        height: auto !important;
+        justify-content: center !important; /* Di HP buku jadi di tengah */
+        padding-right: 0 !important;
     }
 
     .quill-pen {
-        display: none; /* Hilangkan pena di HP biar nggak menumpuk */
+        display: none; /* Sembunyikan pena di HP agar tidak berantakan */
     }
 
-    /* Ukuran Buku di HP */
-    .flip-book {
-        width: 90vw !important;
-        height: 80vh !important; /* Sesuaikan tinggi agar pas di layar HP */
-    }
-
-    .page-content {
-        padding: 20px !important;
+    #book, .flip-book {
+        width: 90vw !important; /* Paksa lebar buku pas dengan layar HP */
+        height: 500px !important;
     }
 
     .cinzel-font {
-        font-size: 1.4rem !important; /* Kecilkan judul di HP */
+        font-size: 1.5rem !important; /* Kecilkan teks di HP */
         letter-spacing: 2px !important;
     }
 
     .pinyon-font {
         font-size: 1.3rem !important;
-    }
-
-    .page-cover {
-        outline-offset: -10px;
-    }
-
-    .page-cover::before, .page-cover::after {
-        font-size: 0.9rem;
     }
 }
