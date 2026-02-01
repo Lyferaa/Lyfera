@@ -189,50 +189,35 @@ small {
    ========================================================== */
 @media screen and (max-width: 1024px) {
     body {
-        /* Mengizinkan scroll agar bisa digeser-geser */
+        /* Mengizinkan scroll jika pengunjung melakukan zoom */
         overflow: auto !important; 
-        display: block !important; /* Agar tidak dipaksa ke tengah layar */
+        -webkit-overflow-scrolling: touch;
     }
 
     .container {
-        /* Tetap gunakan ukuran asli laptop agar tidak hancur */
-        width: 1100px !important; 
-        height: 700px !important;
+        /* Ukuran asli laptop agar layout tidak berantakan */
+        width: 1000px !important; 
+        height: 600px !important;
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
-        position: relative !important;
         padding-right: 50px !important;
         
-        /* Hilangkan transform scale agar ukuran tetap besar/utuh */
-        transform: none !important; 
-        left: 0 !important;
-        top: 0 !important;
-        margin: 0 !important;
+        /* Tampilan awal dibuat kecil agar pas di layar HP (0.35) */
+        /* Tapi karena user-scalable=yes, ini bisa diperbesar secara manual */
+        transform: scale(0.38); 
+        transform-origin: top left; /* Agar saat di-zoom, titik pusatnya rapi */
+        
+        /* Memberikan ruang agar konten tidak terpotong saat di-zoom */
+        margin-bottom: 200px; 
     }
 
     .quill-pen {
         display: block !important;
         position: absolute !important;
-        left: 30px !important; /* Posisi asli pena di kiri */
-        bottom: 50px !important;
+        left: 50px !important;
+        bottom: 70px !important;
         width: 280px !important;
         opacity: 1 !important;
-    }
-
-    /* Tambahkan petunjuk visual agar user tahu bisa digeser */
-    body::after {
-        content: "← Geser untuk melihat pena / buku →";
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: #c5a059;
-        font-size: 12px;
-        background: rgba(0,0,0,0.6);
-        padding: 5px 15px;
-        border-radius: 20px;
-        z-index: 100;
-        pointer-events: none;
     }
 }
