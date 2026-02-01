@@ -188,44 +188,41 @@ small {
 /* ==========================================================
    PAGAR PENYELAMAT HP (HANYA AKTIF DI LAYAR KECIL)
    ========================================================== */
-@media screen and (max-width: 1024px) {
-    body {
-        /* Mengizinkan scroll dan zoom manual */
-        overflow: auto !important; 
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        min-height: 100vh;
-    }
-
-    .container {
-        /* Pakai ukuran asli laptopmu */
-        width: 1000px !important; 
-        height: 600px !important;
-        position: relative !important;
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-        padding-right: 50px !important;
-
-        /* KUNCINYA: Pakai scale tapi origin di TENAH agar tidak lari ke pojok */
-        transform: scale(0.55); 
-        transform-origin: center center; 
-        
-        /* Menghilangkan margin yang bikin lari */
-        margin: 0 !important;
-        flex-shrink: 0;
-    }
-
-    .quill-pen {
-        display: block !important;
-        position: absolute !important;
-        left: 50px !important;
-        bottom: 70px !important;
-        width: 280px !important;
-        opacity: 1 !important;
-    }
+/* 1. Sembunyikan pesan saat di laptop */
+#landscape-message {
+    display: none;
 }
 
+/* 2. Saat dibuka di HP dengan posisi Berdiri (Portrait) */
+@media screen and (max-width: 1024px) and (orientation: portrait) {
+    #landscape-message {
+        display: flex;
+        position: fixed;
+        top: 0; left: 0; 
+        width: 100%; height: 100%;
+        background: #050505;
+        color: #c5a059;
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-family: 'Cinzel', serif;
+    }
+    .container { display: none !important; } /* Sembunyikan buku agar tidak berantakan */
+}
 
-
+/* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    .container {
+        display: flex !important;
+        transform: scale(0.65); /* Ukuran pas di layar miring */
+        transform-origin: center center;
+        width: 1000px !important;
+        height: 600px !important;
+        position: fixed;
+        top: 50%; left: 50%;
+        margin-left: -500px;
+        margin-top: -300px;
+    }
+    #landscape-message { display: none; }
+}
