@@ -267,40 +267,69 @@ small {
 /* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
 @media screen and (max-width: 1024px) and (orientation: landscape) {
     html, body {
-        /* Mengunci layar agar tidak goyang ke samping */
         overflow-x: hidden !important;
-        overflow-y: auto !important;
+        overflow-y: auto !important; /* Mengizinkan scroll naik-turun */
         height: 100% !important;
-        position: relative !important;
     }
 
+    /* --- ANIMASI TANGAN BERGERAK (POJOK KIRI) --- */
+    .scroll-instruction {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        pointer-events: none; /* Biar tidak menghalangi sentuhan */
+    }
+
+    .finger-icon {
+        width: 40px;
+        height: 40px;
+        background-image: url('https://cdn-icons-png.flaticon.com/512/2037/2037257.png'); 
+        background-size: contain;
+        background-repeat: no-repeat;
+        filter: sepia(1) saturate(5) hue-rotate(10deg); /* Warna Emas */
+        animation: finger-bounce 1.5s infinite;
+    }
+
+    @keyframes finger-bounce {
+        0%, 100% { transform: translateY(0); opacity: 0.6; }
+        50% { transform: translateY(25px); opacity: 1; }
+    }
+
+    .scroll-instruction p {
+        color: #c5a059;
+        font-family: 'Cinzel', serif;
+        font-size: 0.75rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+    }
+
+    /* --- PENGATURAN BUKU AGAR TENGAH TEMBUS PANDANG --- */
     .container {
         display: flex !important;
-        /* KUNCI UTAMA: Kita buat container-nya 'tembus' total */
-        pointer-events: none !important; 
-        
+        pointer-events: none !important; /* KUNCI: Area tengah 'hantu' agar bisa scroll */
         width: 1000px !important; 
         height: 600px !important;
-        position: absolute !important; /* Gunakan absolute agar tidak mendorong scroll */
-        top: 50px !important;
+        position: absolute !important;
+        top: 20px !important;
         left: 50% !important;
-        transform: translateX(-50%) scale(0.65) !important; 
+        transform: translateX(-50%) scale(0.6) !important; 
         transform-origin: top center; 
         z-index: 5;
     }
 
     .flip-book {
-        /* HANYA buku yang bisa menerima sentuhan jari */
-        pointer-events: auto !important; 
+        pointer-events: auto !important; /* Cuma buku yang bisa diklik */
     }
 
-    /* Tambahkan ruang kosong buatan agar HP mendeteksi ada area untuk di-scroll */
+    /* Tambahkan ruang di bawah agar scroll bisa naik turun jauh */
     body::after {
         content: "";
         display: block;
-        height: 800px; /* Panjang area scroll */
-        width: 1px;
-        pointer-events: none;
+        height: 600px; 
     }
 
     #landscape-message { display: none !important; }
