@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- 1. LOGIKA AMPLOP VINTAGE (TAMBAHKAN INI) ---
+    // 1. Tambahkan ini di paling atas agar scroll lancar
+    document.documentElement.style.scrollBehavior = 'smooth';
+
+    // 2. LOGIKA AMPLOP VINTAGE
     const sealBtn = document.getElementById('wax-seal-btn');
     const envelope = document.getElementById('envelope-wrapper');
     const instruction = document.getElementById('instruction-text');
@@ -28,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 2. INISIALISASI BUKU (KODE ASLIMU) ---
+    // 3. INISIALISASI BUKU (KODE ASLIMU)
     const pageFlip = new St.PageFlip(document.getElementById('demoBookCol'), {
         width: 450, 
         height: 600,
@@ -58,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // --- 3. NAVIGASI TAP (KODE ASLIMU) ---
+    // 4. NAVIGASI TAP
     document.addEventListener('touchstart', function(e) {
         if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
             const touchX = e.touches[0].clientX;
