@@ -189,25 +189,35 @@ small {
    ========================================================== */
 @media screen and (max-width: 1024px) {
     body {
-        overflow: hidden; /* Mencegah layar goyang saat di-klik */
+        overflow: hidden;
     }
 
+    /* Memaksa kontainer HP punya struktur yang sama dengan laptop */
     .container {
-        width: 100vw !important; /* Paksa lebar sesuai layar HP */
-        height: 100vh !important;
-        justify-content: center !important; /* Buku otomatis ke tengah di HP */
-        padding-right: 0 !important;
-        transform: scale(0.6); /* Mengecilkan semua elemen agar pas di satu layar HP */
-        transform-origin: center;
+        width: 1000px !important; /* Ukuran asli laptop */
+        height: 600px !important;
+        display: flex !important;
+        flex-direction: row !important; /* Tetap menyamping */
+        justify-content: flex-end !important;
+        padding-right: 50px !important;
+        
+        /* KUNCINYA: Zoom out seluruh kontainer agar muat di HP */
+        transform: scale(0.35); 
+        transform-origin: center center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -500px; /* Setengah dari width */
+        margin-top: -300px;  /* Setengah dari height */
     }
 
     .quill-pen {
-        left: -50px !important; /* Geser posisi pena agar tidak menumpuk dengan buku */
-        opacity: 0.8;
-    }
-
-    /* Memastikan sensor sentuhan (klik) tetap responsif */
-    .flip-book {
-        touch-action: manipulation;
+        display: block !important; /* Pastikan pena bulu muncul */
+        position: absolute !important;
+        left: 50px !important;
+        bottom: 70px !important;
+        width: 280px !important;
+        opacity: 1 !important;
+        transform: rotate(0deg) scaleX(-1) !important;
     }
 }
