@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Inisialisasi PageFlip
+    // 1. INISIALISASI BUKU (Kode Aslimu)
     const pageFlip = new St.PageFlip(document.getElementById('demoBookCol'), {
         width: 450, 
         height: 600,
@@ -15,41 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
-    // 2. Audio & Musik
     const flipSound = document.getElementById('flipSound');
     const bgMusic = document.getElementById('bgMusic');
 
     pageFlip.on('flip', (e) => {
-        flipSound.currentTime = 0;
-        flipSound.play();
+        if (flipSound) {
+            flipSound.currentTime = 0;
+            flipSound.play();
+        }
         if (bgMusic && bgMusic.paused) {
             bgMusic.volume = 0.3;
             bgMusic.play();
         }
     });
 
-    // 3. Tombol Mode Baca (Untuk HP)
-    const readBtn = document.getElementById('read-mode-btn');
-    const bookContainer = document.querySelector('.container');
-
-    if(readBtn) {
-        readBtn.addEventListener('click', () => {
-            bookContainer.classList.toggle('reading');
-            if (bookContainer.classList.contains('reading')) {
-                readBtn.innerText = "🖼️ Lihat Tampilan Utuh";
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                readBtn.innerText = "📖 Perbesar Tulisan";
-            }
-        });
-    }
-
-    // 4. Navigasi Tap
+    // 2. NAVIGASI TAP (Kode Aslimu)
     document.addEventListener('touchstart', function(e) {
         if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
             const touchX = e.touches[0].clientX;
             const screenWidth = window.innerWidth;
-
             if (touchX < screenWidth * 0.4) {
                 pageFlip.flipPrev();
             } else {
@@ -57,4 +41,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }, {passive: true});
+
+    // 3. LOGIKA AMPLOP VINTAGE (Tambahan Baru)
+    const sealBtn = document.getElementById('wax-seal-btn');
+    const envelope = document.getElementById('envelope-wrapper');
+    const instruction = document.getElementById('instruction-text');
+
+    if (sealBtn) {
+        sealBtn.addEventListener('click', function() {
+            // Efek suara buka kertas (opsional, bisa ditambah jika ada file-nya)
+            // if (flipSound) flipSound.play();
+
+            // Animasi Amplop Menghilang
+            envelope.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+            envelope.style.opacity = "0";
+            envelope.style.transform = "scale(1.1)";
+
+            setTimeout(() => {
+                envelope.style.display = "none";
+                
+                // Munculkan Instruksi Miringkan HP
+                if (instruction) {
+                    instruction.style.display = "block";
+                    instruction.style.opacity = "0";
+                    setTimeout(() => {
+                        instruction.style.transition = "opacity 1s ease";
+                        instruction.style.opacity = "1";
+                    }, 50);
+                }
+            }, 800);
+        });
+    }
 });
