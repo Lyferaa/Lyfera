@@ -264,16 +264,26 @@ small {
     }
 }
 
- /* INI PERBAIKANNYA: Menghilangkan penghalang di area tengah */
+/* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+    body {
+        overflow-y: scroll !important; 
+        overflow-x: hidden !important;
+        display: block !important; 
+        height: auto !important;
+        background-color: #050505;
+    }
+
+    /* Agar pesan yang hilang tidak menghalangi jari di tengah layar */
     #landscape-message { 
         display: none !important; 
-        pointer-events: none !important; /* Agar jari bisa 'tembus' ke bawah */
+        pointer-events: none !important; 
     }
 
     .container {
         display: flex !important;
-        /* Pastikan container buku tidak menutupi area scroll layar */
-        pointer-events: none !important; /* Container tembus pandang */
+        /* KUNCI AGAR AREA TENGAH BISA DI-SCROLL: */
+        pointer-events: none !important; 
         
         width: 1000px !important; 
         height: 600px !important;
@@ -285,8 +295,8 @@ small {
         margin-bottom: 250px !important; 
     }
 
-    /* Agar buku tetap bisa diklik (halaman dibalik) tapi area sekitarnya bisa di-scroll */
+    /* Buku harus tetap bisa disentuh untuk balik halaman */
     .flip-book {
-        pointer-events: auto !important; /* Buku tetap bisa disentuh */
+        pointer-events: auto !important; 
     }
 }
