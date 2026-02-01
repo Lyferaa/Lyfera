@@ -189,27 +189,31 @@ small {
    ========================================================== */
 @media screen and (max-width: 1024px) {
     body {
-        /* Mengizinkan scroll jika pengunjung melakukan zoom */
+        /* Mengizinkan scroll dan zoom manual */
         overflow: auto !important; 
-        -webkit-overflow-scrolling: touch;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        min-height: 100vh;
     }
 
     .container {
-        /* Ukuran asli laptop agar layout tidak berantakan */
+        /* Pakai ukuran asli laptopmu */
         width: 1000px !important; 
         height: 600px !important;
+        position: relative !important;
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
         padding-right: 50px !important;
-        
-        /* Tampilan awal dibuat kecil agar pas di layar HP (0.35) */
-        /* Tapi karena user-scalable=yes, ini bisa diperbesar secara manual */
+
+        /* KUNCINYA: Pakai scale tapi origin di TENAH agar tidak lari ke pojok */
         transform: scale(0.38); 
-        transform-origin: top left; /* Agar saat di-zoom, titik pusatnya rapi */
+        transform-origin: center center; 
         
-        /* Memberikan ruang agar konten tidak terpotong saat di-zoom */
-        margin-bottom: 200px; 
+        /* Menghilangkan margin yang bikin lari */
+        margin: 0 !important;
+        flex-shrink: 0;
     }
 
     .quill-pen {
