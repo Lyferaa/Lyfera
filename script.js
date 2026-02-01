@@ -26,4 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
             bgMusic.play();
         }
     });
-});
+// --- KODE BARU: AGAR BISA DI-KLIK DI HP ---
+    document.addEventListener('touchstart', function(e) {
+        // Jika yang disentuh adalah area buku
+        if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
+            pageFlip.flipNext(); // Langsung buka halaman selanjutnya
+        }
+    });
+    // --- AKHIR KODE BARU ---
+
+}); // <-- Ini adalah baris paling akhir filemu
