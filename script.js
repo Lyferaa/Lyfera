@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pageFlip = new St.PageFlip(document.getElementById('demoBookCol'), {
         width: 450, 
         height: 600,
-        size: "fixed", // Agar ukuran buku konsisten di tengah
+        size: "fixed", 
         minWidth: 450,
         minHeight: 600,
         maxWidth: 450,
@@ -20,19 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
     pageFlip.on('flip', (e) => {
         flipSound.currentTime = 0;
         flipSound.play();
-        // Musik mulai setelah interaksi pertama
         if (bgMusic.paused) {
             bgMusic.volume = 0.3;
             bgMusic.play();
         }
     });
-// --- KODE BARU: AGAR BISA DI-KLIK DI HP ---
+
+    // --- NAVIGASI PINTAR UNTUK HP ---
     document.addEventListener('touchstart', function(e) {
-        // Jika yang disentuh adalah area buku
         if (e.target.closest('.page-cover') || e.target.closest('.page-content')) {
-            pageFlip.flipNext(); // Langsung buka halaman selanjutnya
+            const touchX = e.touches[0].clientX;
+            const screenWidth = window.innerWidth;
+
+            // Jika sentuh layar bagian kiri (30% layar), balik ke halaman sebelumnya
+            if (touchX < screenWidth * 0.3) {
+                pageFlip.flipPrev();
+            } 
+            // Jika sentuh sisa layarnya, lanjut ke halaman depan
+            else {
+                pageFlip.flipNext();
+            }
         }
     });
-    // --- AKHIR KODE BARU ---
-
-}); // <-- Ini adalah baris paling akhir filemu
+});
