@@ -188,10 +188,11 @@ small {
 /* Khusus untuk tampilan layar HP (Mobile) */
 @media (max-width: 600px) {
     .container {
-        width: 95%; /* Biar gak mentok pinggir layar */
-        padding: 10px;
+        width: 100vw !important; /* Paksa lebar sesuai layar HP */
+        min-height: 100vh !important;
+        padding: 20px !important;
     }
-
+}
     h1 {
         font-size: 1.8rem !important; /* Ukuran judul disesuaikan agar pas */
     }
@@ -206,6 +207,7 @@ small {
         height: auto !important;
     }
 }
+
 
 
 
