@@ -193,22 +193,41 @@ small {
     display: none;
 }
 
-/* 2. Saat dibuka di HP dengan posisi Berdiri (Portrait) */
 @media screen and (max-width: 1024px) and (orientation: portrait) {
     #landscape-message {
         display: flex;
         position: fixed;
-        top: 0; left: 0; 
-        width: 100%; height: 100%;
-        background: #050505;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: #050505; /* Warna dasar gelap */
         color: #c5a059;
-        z-index: 9999;
+        z-index: 10000;
         justify-content: center;
         align-items: center;
         text-align: center;
+        padding: 30px;
         font-family: 'Cinzel', serif;
+        
+        /* --- EFEK VINTAGE BARU DI SINI --- */
+        background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png'), /* Tekstur kulit gelap */
+                        url('https://i.ibb.co/L5r64S0/vintage-paper-border.png'); /* Gambar border atau bingkai vintage (Ganti URL ini jika punya gambar lain) */
+        background-size: cover, 80% 80%; /* Ukuran cover untuk tekstur, 80% untuk bingkai */
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        /* Tambahkan sedikit overlay gelap agar teks lebih jelas */
+        box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5); 
+        
+        /* Gaya Teks di dalam pesan */
+        p {
+            font-size: 1.1rem; /* Ukuran teks lebih besar */
+            line-height: 1.8;
+            padding: 20px;
+            background: rgba(0,0,0,0.3); /* Sedikit background transparan untuk teks */
+            border-radius: 10px;
+            border: 1px solid rgba(197, 160, 89, 0.5); /* Bingkai emas tipis */
+        }
     }
-    .container { display: none !important; } /* Sembunyikan buku agar tidak berantakan */
+    .container { display: none !important; }
 }
 
 /* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
@@ -239,3 +258,4 @@ small {
 
     #landscape-message { display: none; }
 }
+
