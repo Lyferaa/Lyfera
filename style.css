@@ -6,12 +6,12 @@
 }
 
 body {
-    background-color: #050505; /* Latar gelap pekat */
+    background-color: #050505;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden; /* Mencegah geser kanan-kiri yang mengganggu */
     position: relative;
     font-family: 'Playfair Display', serif;
 }
@@ -19,29 +19,30 @@ body {
 /* --- 2. CONTAINER & POSISI --- */
 .container {
     position: relative;
-    width: 1000px; 
+    width: 100%;
+    max-width: 1000px; 
     height: 600px;
     display: flex;
-    justify-content: flex-end; /* Buku di sisi kanan */
+    justify-content: center; /* Diubah jadi center agar seimbang di semua layar */
     align-items: center;
-    padding-right: 50px;
+    padding: 20px;
 }
 
-/* --- 3. DEKORASI PENA BULU (Sisi Kiri) --- */
+/* --- 3. DEKORASI PENA BULU --- */
 .quill-pen {
     position: absolute;
     left: 50px;
     bottom: 70px;
     width: 280px;
     z-index: 1;
-    filter: brightness(1.0);
-    transform: rotate(-0deg) scaleX(-1);
+    filter: brightness(0.8);
+    transform: scaleX(-1);
     pointer-events: none;
 }
 
-/* --- 4. STYLING BUKU (FLIP BOOK) --- */
+/* --- 4. STYLING BUKU --- */
 .flip-book {
-    box-shadow: none;
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
     background-color: transparent;
     display: block;
     z-index: 10;
@@ -51,7 +52,7 @@ body {
 .page {
     background-color: #1a1a1a;
     overflow: hidden;
-    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Bayangan lipatan tengah */
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.5);
 }
 
 .page-content {
@@ -61,168 +62,127 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px; 
+    padding: 40px; 
     text-align: center;
     position: relative;
     background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png');
 }
 
-/* --- 6. COVER VINTAGE (BLACK LEATHER & GOLD) --- */
+/* --- 6. COVER VINTAGE --- */
 .page-cover {
     background-color: #0d0d0d !important;
     background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png') !important;
-    border-left: 15px solid #000; /* Punggung Buku */
+    border-left: 10px solid #000;
     position: relative;
     outline: 2px solid #c5a059;
-    outline-offset: -20px; 
+    outline-offset: -15px; 
     border-radius: 5px 15px 15px 5px;
 }
 
 .page-cover::before, .page-cover::after {
-    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺··༻𐫱༺·'; 
+    content: '·༻𐫱༺··༻𐫱༺··༻𐫱༺·'; 
     position: absolute;
     color: #c5a059;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     z-index: 5;
     width: 100%;
-    text-align: center;
     left: 0;
 }
 
-.page-cover::before { top: 30px; }
-.page-cover::after { bottom: 30px; transform: rotate(180deg); }
+.page-cover::before { top: 25px; }
+.page-cover::after { bottom: 25px; transform: rotate(180deg); }
 
-.spine-effect {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 15px;
-    height: 100%;
-    background: linear-gradient(90deg, #000, #222, #000);
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-    z-index: 10;
-}
-
-/* --- 7. TYPOGRAPHY (TULISAN EMAS) --- */
+/* --- 7. TYPOGRAPHY --- */
 .cinzel-font { 
     font-family: 'Cinzel', serif; 
-    letter-spacing: 5px; 
+    letter-spacing: 3px; 
     color: #f1d295;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-    margin-bottom: 10px;
-    font-size: 2.2rem;
+    font-size: 2rem;
+    line-height: 1.2;
 }
 
 .pinyon-font { 
     font-family: 'Pinyon Script', cursive; 
     color: #b59410; 
-    font-size: 2rem;
-    margin: 10px 0;
+    font-size: 1.8rem;
+    margin: 15px 0;
 }
 
 .divider {
-    width: 120px;
+    width: 100px;
     height: 1px;
     background: linear-gradient(90deg, transparent, #c5a059, transparent);
     margin: 20px 0;
 }
 
-small {
-    color: #666;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    margin-top: 30px;
-}
-
-/* --- 8. HALAMAN DALAM --- */
+/* --- 8. HALAMAN DALAM & LAYOUT --- */
 .layout-modern {
     display: flex !important;
     flex-direction: column !important;
-    padding: 30px !important;
-    justify-content: flex-start !important;
-}
-
-.header-area {
-    width: 100%;
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 20px !important;
 }
 
 .content-wrapper {
     display: flex;
     width: 100%;
-    gap: 25px;
-    align-items: flex-start;
-}
-
-.text-side {
-    flex: 1.2;
-    text-align: left;
-}
-
-.text-side p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #d4d4d4;
-}
-
-.image-side {
-    flex: 3;
-    display: flex;
-    justify-content: center;
+    gap: 15px;
 }
 
 .image-side img {
     width: 100%;
-    max-height: 350px;
-    object-fit: cover;
+    max-height: 300px;
+    object-fit: contain; /* Agar gambar tidak terpotong */
 }
 
-/* --- 9. RESPONSIVE MOBILE (PERBAIKAN) --- */
+/* --- 9. PERBAIKAN TOTAL UNTUK MOBILE (HP) --- */
 @media (max-width: 600px) {
     body {
-        height: auto;
-        overflow-y: auto; /* Biar bisa di-scroll di HP */
+        height: 100vh;
+        overflow: hidden;
     }
 
     .container {
-        width: 100vw !important;
-        height: auto !important;
+        width: 100%;
+        height: 90vh;
         padding: 10px !important;
         justify-content: center !important;
-        padding-right: 0 !important;
     }
 
     .quill-pen {
-        display: none; /* Sembunyikan pena di HP agar tidak sumpek */
+        display: none; /* Pena dihilangkan di HP agar fokus ke buku */
+    }
+
+    /* Ukuran Buku di HP agar Pas Layar */
+    .flip-book {
+        width: 90vw !important;
+        height: 70vh !important;
     }
 
     .page-content {
-        padding: 30px 15px !important;
+        padding: 20px !important;
     }
 
+    /* Ukuran Teks agar Tidak Kebesaran di HP */
     .cinzel-font {
-        font-size: 1.6rem !important;
+        font-size: 1.4rem !important;
         letter-spacing: 2px !important;
     }
 
     .pinyon-font {
-        font-size: 1.4rem !important;
+        font-size: 1.3rem !important;
     }
 
-    /* Penyesuaian Buku di HP */
-    #book, .flip-book {
-        width: 95% !important;
-        height: 500px !important; /* Batasi tinggi di HP */
-        margin: 0 auto;
+    .page-cover {
+        outline-offset: -10px;
+    }
+
+    .page-cover::before, .page-cover::after {
+        font-size: 0.9rem;
     }
 
     .content-wrapper {
-        flex-direction: column; /* Foto dan teks jadi berurutan atas-bawah */
-    }
-
-    .image-side img {
-        max-height: 250px;
+        flex-direction: column;
+        align-items: center;
     }
 }
