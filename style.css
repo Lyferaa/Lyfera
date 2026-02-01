@@ -264,34 +264,29 @@ small {
     }
 }
 
-/* 3. Saat dibuka di HP dengan posisi Miring (Landscape) */
-@media screen and (max-width: 1024px) and (orientation: landscape) {
-    body {
-        /* KUNCINYA: Paksa scrollbar vertikal muncul */
-        overflow-y: scroll !important; 
-        overflow-x: hidden !important;
-        display: block !important; 
-        height: 100% !important; /* Diubah ke 100% agar sinkron dengan scroll */
-        background-color: #050505;
+ /* INI PERBAIKANNYA: Menghilangkan penghalang di area tengah */
+    #landscape-message { 
+        display: none !important; 
+        pointer-events: none !important; /* Agar jari bisa 'tembus' ke bawah */
     }
 
     .container {
         display: flex !important;
+        /* Pastikan container buku tidak menutupi area scroll layar */
+        pointer-events: none !important; /* Container tembus pandang */
+        
         width: 1000px !important; 
         height: 600px !important;
         position: relative !important;
         left: 50% !important;
         transform: translateX(-50%) scale(0.7) !important; 
         transform-origin: top center; 
-        
         margin-top: 50px !important;  
-        /* Ruang di bawah ditingkatkan agar scrollbar terlihat jelas jalannya */
-        margin-bottom: 200px !important; 
+        margin-bottom: 250px !important; 
     }
 
-    /* Pastikan pesan tidak menghalangi sentuhan jari ke scrollbar */
-    #landscape-message { 
-        display: none !important; 
-        pointer-events: none !important;
+    /* Agar buku tetap bisa diklik (halaman dibalik) tapi area sekitarnya bisa di-scroll */
+    .flip-book {
+        pointer-events: auto !important; /* Buku tetap bisa disentuh */
     }
 }
