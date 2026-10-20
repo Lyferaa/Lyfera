@@ -11,8 +11,8 @@ const SITE = {
     note: "Beberapa karya lama bertanda tangan @zafera_zahra — itu akun lama saya.",
     contacts: [
         { label: "Instagram @lyfera_", href: "https://www.instagram.com/lyfera_/" },
-        { label: "Email", href: "" /* contoh: "mailto:nama@email.com" */ },
-        { label: "WhatsApp", href: "" /* contoh: "https://wa.me/628xxxxxxxxxx" */ }
+        { label: "Email", href: "mailto:shfirazhraa@gmail.com" /* contoh: "mailto:nama@email.com" */ },
+        { label: "WhatsApp", href: "https://wa.me/089607130324" /* contoh: "https://wa.me/628xxxxxxxxxx" */ }
     ]
 };
 
